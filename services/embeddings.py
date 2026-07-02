@@ -1,15 +1,13 @@
-from sentence_transformers import SentenceTransformer
+from functools import lru_cache
 
-# Lightweight but powerful model
-model = SentenceTransformer("all-MiniLM-L6-v2")
-
+@lru_cache()
+def get_model():
+    from sentence_transformers import SentenceTransformer
+    return SentenceTransformer("all-MiniLM-L6-v2")
 
 def get_embedding(text: str):
-    """
-    Convert text into vector (embedding)
-    """
-    return model.encode(text)
-
+    model = get_model()
+    return model.encode(text).tolist()
 
 def embed_catalog(catalog):
     """
