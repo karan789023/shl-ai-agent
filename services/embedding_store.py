@@ -3,6 +3,8 @@ from services.embeddings import get_model
 
 
 def build_and_save_embeddings(catalog, path="data/processed/embeddings.npy"):
+    model = get_model()
+
     texts = []
 
     for item in catalog:
