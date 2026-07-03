@@ -1,5 +1,5 @@
 import numpy as np
-from services.embeddings import model
+from services.embeddings import get_model
 
 
 def build_and_save_embeddings(catalog, path="data/processed/embeddings.npy"):
